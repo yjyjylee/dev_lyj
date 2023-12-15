@@ -1,0 +1,60 @@
+<mvc:View controllerName="project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns="sap.m">
+
+        <VBox fitContainer="true">
+         <smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="zc_edu_student_lyj" persistencyKey="SmartFilter_Explored" 
+         basicSearchFieldName="StudDeptDesc" enableBasicSearch="false" >
+            <!-- <smartFilterBar:controlConfiguration>
+               <smartFilterBar:ControlConfiguration key="StudDeptDesc">
+               <smartFilterBar:defaultFilterValues>
+                     <smartFilterBar:SelectOption low="체육교육과">
+                     </smartFilterBar:SelectOption>
+                  </smartFilterBar:defaultFilterValues>
+               </smartFilterBar:ControlConfiguration>
+               <smartFilterBar:ControlConfiguration key="Gjahr">
+                  <smartFilterBar:defaultFilterValues>
+                        <smartFilterBar:SelectOption low="2014">
+                        </smartFilterBar:SelectOption>
+                     </smartFilterBar:defaultFilterValues>
+                  </smartFilterBar:ControlConfiguration>
+            </smartFilterBar:controlConfiguration> -->
+            <!-- layout data used to make the table growing but the filter bar fixed -->
+            <smartFilterBar:layoutData>
+               <FlexItemData shrinkFactor="0"/>
+            </smartFilterBar:layoutData>
+         </smartFilterBar:SmartFilterBar>
+        <smartTable:SmartTable id="LineItemsSmartTable" entitySet="zc_edu_student_lyj" smartFilterId="smartFilterBar" 
+        initiallyVisibleFields="StudCode,StudDesc,StudDeptDesc"  
+         header="학생 정보 리스트" showRowCount="true"
+         tableType="Table" 
+         beforeExport="onBeforeExport" useExportToExcel="true"
+         useVariantManagement="true" useTablePersonalisation="true" 
+         persistencyKey="SmartTableAnalytical_Explored" 
+         enableAutoBinding="true" class="sapUiResponsiveContentPadding" 
+         enableAutoColumnWidth="true" editTogglable="true" app:useSmartToggle="true" app:useSmartField="true" >
+            <smartTable:customToolbar>
+            <OverflowToolbar design="Transparent">
+               <ToolbarSpacer/>
+               <OverflowToolbarButton icon="sap-icon://add" tooltip="Create" text="Create" press="onCreate"/>
+                <!-- <OverflowToolbarButton icon="sap-icon://edit" tooltip="edit" text="edit" press="onEdit"/> -->
+                <OverflowToolbarButton icon="sap-icon://save" tooltip="save" text="save" press="onSave"/>
+               <OverflowToolbarButton icon="sap-icon://delete" tooltip="Delete" text="Delete" press="onDelsel"/>
+            </OverflowToolbar>
+         </smartTable:customToolbar>
+            <!-- layout data used to make the table growing but the filter bar fixed -->
+            <smartTable:layoutData>
+               <FlexItemData growFactor="1" baseSize="0%"/>
+            </smartTable:layoutData>
+            <!-- mode : 테이블 행 선택할 수 있는 버튼 / type : navigation 테이블 행에 이동 버튼 주기 -->
+            <Table mode="MultiSelect">
+               <ColumnListItem type="Navigation" press="onItemPress">
+               </ColumnListItem>
+	         </Table>	
+         </smartTable:SmartTable>
+        </VBox>
+</mvc:View>

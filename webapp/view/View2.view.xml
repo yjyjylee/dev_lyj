@@ -1,0 +1,96 @@
+<mvc:View
+	controllerName="project1.controller.View2"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.f"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:smartField="sap.ui.comp.smartfield"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0">
+
+<ObjectPageLayout
+		id="ObjectPageLayout"
+		showTitleInHeaderContent="true"
+		alwaysShowContentHeader="false"
+		preserveHeaderStateOnScroll="false"
+		headerContentPinnable="true"
+		isChildPage="true"
+		upperCaseAnchorBar="false"
+		enableLazyLoading="true">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="{StudCode}" wrapping="true" class="sapUiSmallMarginEnd"/>
+				</expandedHeading>
+				<!-- <actions>
+					<m:ToggleButton
+						text="Edit"
+						type="Emphasized"
+						press=".onEditToggleButtonPress"
+						id = "editButton" />
+					<m:Button
+						text="Delete"
+						type="Transparent"
+						press=".onDeleteToggleButtonPress"/>
+					<m:Button
+						icon="sap-icon://action"
+						type="Transparent"/>
+				</actions> -->
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+			<ObjectPageSection >
+				<subSections>
+					<ObjectPageSubSection >
+						<blocks>
+							<m:VBox >
+								<smartForm:SmartForm id="smartFormColumn" title="학생정보"
+								editTogglable="true" validationMode="Async"
+								editToggled="handleEditToggled">
+								<smartForm:layout>
+									<smartForm:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"/>
+								</smartForm:layout>
+								<smartForm:Group >
+									<smartForm:GroupElement>
+										<smartField:SmartField value="{StudDesc}" id="idStudDescSmartField"/>
+									</smartForm:GroupElement>
+									<smartForm:GroupElement>
+										<smartField:SmartField value="{StudCode}" id="idStudCodeSmartField" />
+									</smartForm:GroupElement>
+									<smartForm:GroupElement>
+										<smartField:SmartField value="{StrDate}"/>
+									</smartForm:GroupElement>
+									<smartForm:GroupElement>
+										<smartField:SmartField value="{EndDate}"/>
+									</smartForm:GroupElement>
+									<smartForm:GroupElement>
+										<smartField:SmartField value="{StudDeptCode}"/>
+									</smartForm:GroupElement>
+									<smartForm:GroupElement>
+										<smartField:SmartField value="{StudDeptDesc}"/>
+									</smartForm:GroupElement>
+								</smartForm:Group>
+							<!-- <smartForm:customToolbar>
+								<OverflowToolbar design="Transparent">
+									<ToolbarSpacer ></ToolbarSpacer>
+									<OverflowToolbarButton icon="sap-icon://save" tooltip="Save" text="Save" press="onSave"/>
+								</OverflowToolbar>
+							</smartForm:customToolbar> -->
+								</smartForm:SmartForm>
+							</m:VBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		<footer>
+			<m:OverflowToolbar>
+				<m:ToolbarSpacer/>
+				<m:Button type="Emphasized" text="Save" press="onSavePress" />
+				<m:Button type="Negative" text="Delete" press="onDeletePress" id="deletebutton"/>
+				<m:Button type="Default" text="Cancel" press="onCancelPress"/>
+			</m:OverflowToolbar>
+		</footer>
+	</ObjectPageLayout>	
+</mvc:View>
